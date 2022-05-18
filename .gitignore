@@ -1,0 +1,6 @@
+.idea/
+venv/
+data/
+hp_search_results/
+images/
+__pycache__/

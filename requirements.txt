@@ -1,0 +1,11 @@
+numpy
+pandas
+sklearn
+scikit-learn-intelex
+tensorflow
+keras_tuner
+scikeras
+jupyter
+matplotlib
+plotly
+kaleido
