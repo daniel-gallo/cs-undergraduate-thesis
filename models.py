@@ -4,6 +4,7 @@ import keras_tuner as kt
 from keras_tuner import HyperParameters
 from scikeras.wrappers import KerasRegressor
 from sklearn.compose import TransformedTargetRegressor
+from sklearn.ensemble import BaggingRegressor
 from sklearn.linear_model import Ridge, Lasso
 from sklearn.neural_network import MLPRegressor
 from sklearn.pipeline import Pipeline
@@ -217,6 +218,15 @@ def get_cnn():
     ])
 
 
+def get_cnn_ensemble():
+    return BaggingRegressor(
+        base_estimator=get_cnn(),
+        n_estimators=6,
+        bootstrap=False,
+        bootstrap_features=False
+    )
+
+
 models_by_name = {
     'ridge': get_ridge,
     'lasso': get_lasso,
@@ -225,4 +235,5 @@ models_by_name = {
     'sklearn_mlp': get_sklearn_mlp,
     'dropout': get_dropout,
     'cnn': get_cnn,
+    'cnn_ensemble': get_cnn_ensemble
 }
