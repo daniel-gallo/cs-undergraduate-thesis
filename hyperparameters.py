@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from data_manager import DataManager
 from estimators.transformers.matrix_to_tensor import MatrixToTensor
 from estimators.transformers.tensor_standard_scaler import TensorStandardScaler
-from models import get_ridge, get_lasso, get_svr, get_mlp, get_cnn_model_from_parameters, \
+from models import get_ridge, get_lasso, get_svr, get_sklearn_mlp, get_cnn_model_from_parameters, \
     get_dropout_model_from_parameters
 
 
@@ -105,7 +105,15 @@ def svr_gs():
     _run_grid_search('svr', get_svr(), param_grid)
 
 
-def mlp_gs():
+def custom_mlp_gs():
+    param_grid = dict(
+        regressor__regressor__alpha=[2 ** k for k in range(-16, 8)],
+    )
+
+    _run_grid_search('mlp', get_sklearn_mlp(), param_grid)
+
+
+def sklearn_mlp_gs():
     architectures = []
     for num_hidden_layers in (1, 2, 3):
         for units_per_layer in (50, 100, 150):
@@ -116,15 +124,7 @@ def mlp_gs():
         regressor__regressor__alpha=[2 ** k for k in range(-16, 8)],
     )
 
-    _run_grid_search('mlp', get_mlp(), param_grid)
-
-
-def custom_mlp_gs():
-    param_grid = dict(
-        regressor__regressor__alpha=[2 ** k for k in range(-16, 8)],
-    )
-
-    _run_grid_search('mlp', get_mlp(), param_grid)
+    _run_grid_search('mlp', get_sklearn_mlp(), param_grid)
 
 
 def dropout_hs():

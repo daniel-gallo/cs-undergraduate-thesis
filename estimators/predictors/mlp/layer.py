@@ -24,7 +24,7 @@ class Layer:
         :param alpha: L2 regularization parameter.
         :param optimizer: optimizer, e.g. gradient descent with momentum.
         """
-        weight_std = activation.get_weight_init_std(fan_in, fan_out)
+        weight_std = activation.get_initial_weights_std(fan_in, fan_out)
         self.weights = np.random.randn(fan_in, fan_out) * weight_std
         self.weights_optimizer = copy(optimizer)
         self.biases = np.random.randn(fan_out) * weight_std

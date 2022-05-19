@@ -52,18 +52,18 @@ def get_svr():
 
 
 @clip
-def get_mlp():
-    return Pipeline([
-        ('scaler', StandardScaler()),
-        ('regressor', MLPRegressor(hidden_layer_sizes=(150, 150, 150), alpha=0.5))
-    ])
-
-
-@clip
 def get_custom_mlp():
     return Pipeline([
         ('scaler', StandardScaler()),
         ('regressor', MLP(3480, (100, 100), 1, alpha=1, epochs=100))
+    ])
+
+
+@clip
+def get_sklearn_mlp():
+    return Pipeline([
+        ('scaler', StandardScaler()),
+        ('regressor', MLPRegressor(hidden_layer_sizes=(150, 150, 150), alpha=0.5))
     ])
 
 
@@ -222,7 +222,7 @@ models_by_name = {
     'lasso': get_lasso,
     'svr': get_svr,
     'custom_mlp': get_custom_mlp,
-    'mlp': get_mlp,
+    'sklearn_mlp': get_sklearn_mlp,
     'dropout': get_dropout,
     'cnn': get_cnn,
 }
