@@ -14,4 +14,4 @@ class Identity(BaseActivation):
 
     @staticmethod
     def get_initial_weights_std(fan_in: int, fan_out: int):
-        return 2 / (fan_in + fan_out)
+        return np.sqrt(2 / (fan_in + fan_out))
