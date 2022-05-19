@@ -13,5 +13,5 @@ class Identity(BaseActivation):
         return np.ones_like(x)
 
     @staticmethod
-    def get_weight_init_std(fan_in: int, fan_out: int):
+    def get_initial_weights_std(fan_in: int, fan_out: int):
         return 2 / (fan_in + fan_out)

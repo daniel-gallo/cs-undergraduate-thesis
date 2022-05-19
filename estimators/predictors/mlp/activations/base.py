@@ -16,7 +16,7 @@ class BaseActivation(ABC):
 
     @staticmethod
     @abstractmethod
-    def get_weight_init_std(fan_in: int, fan_out: int):
+    def get_initial_weights_std(fan_in: int, fan_out: int):
         """
         :param fan_in: number of input neurons of the layer.
         :param fan_out: number of output neurons of the layer.
